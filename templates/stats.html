@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<title>Stats|BudayaKB</title>
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container" style="text-align: center;">
+  <br><br>
+  <h2>Statistik Budaya</h2>
+  <h3>Halaman penunjukan statistik sesuai mode</h3>
+  <br>
+</div>
+
+<div class="container">
+  <br><br><br>
+  <form action="{{url_for('stats')}}" method="POST">
+    <div class="form-group col-md-4">
+      <label for="inputState">Mode Statistik</label>
+      <select id="inputState" class="form-control" name="mode">
+        <option selected value="name">All</option>
+        <option value="tipe">Tipe</option>
+        <option value="prov">Provinsi</option>
+      </select>
+    </div>
+    <button class="btn btn-outline-success my-2 my-sm-0 container" type="submit">Show</button>
+  </form>
+
+  <br>
+  {% if result1 is defined %}
+  <h2 style="text-align: center;">Totalnya ada {{result1}} Budaya Yang Terdaftar Dalam Daftar Budaya</h2>
+  <br>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">No.</th>
+        <th scope="col">Name</th>
+        <th scope="col">Type</th>
+        <th scope="col">Provinsi</th>
+        <th scope="col">url</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in all %}
+      <tr>
+        <th scope="row">{{loop.index}}</th>
+        <td>{{i.nama}}</td>
+        <td>{{i.tipe}}</td>
+        <td>{{i.prov}}</td>
+        <td>{{i.url}}</td>
+      </tr>
+      {% endfor %}
+
+
+    </tbody>
+  </table>
+  {% endif %}
+
+  {% if result2 is defined %}
+
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">No.</th>
+        <th scope="col">Tipe</th>
+        <th scope="col">Jumlah</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in result2 %}
+      <tr>
+        <th scope="row">{{loop.index}}</th>
+        <td>{{ i }}</td>
+        <td>{{ result2[i] }}</td>
+
+      </tr>
+      {% endfor %}
+
+
+    </tbody>
+  </table>
+
+
+  {% endif %}
+
+  {% if result3 is defined %}
+
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">No.</th>
+        <th scope="col">Provinsi</th>
+        <th scope="col">Jumlah</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in result3 %}
+      <tr>
+        <th scope="row">{{loop.index}}</th>
+        <td>{{ i }}</td>
+        <td>{{ result3[i] }}</td>
+
+      </tr>
+      {% endfor %}
+
+
+    </tbody>
+  </table>
+
+
+  {% endif %}
+
+  {% if imported is defined %}
+  <br><br>
+  <h2 style="text-align: center;" class="alert alert-warning">Mohon Import File CSV Terlebih Dahulu</h2>
+  {% endif %}
+  <br><br><br><br><br><br><br>
+
+</div>
+
+{% endblock %}

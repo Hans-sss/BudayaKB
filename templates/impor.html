@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<title>Import|BudayaKB</title>
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container" style="text-align: center;">
+  <br><br>
+  <h2>Impor Budaya</h2>
+  <h3>Pilih file csv yang berisi daftar budaya</h3>
+  <br><br><br>
+</div>
+<div class="container col-md-6">
+  <form method="POST" , action="{{url_for('impor')}}" enctype="multipart/form-data">
+    <input type="file" accept=".csv,.txt" name=file required>
+    <input type=submit value="Import Data" class="btn" style="background-color: rgb(19, 116, 106); color: whitesmoke;">
+  </form>
+</div>
+<div class="container">
+  <br><br>
+  {% if result is defined and result >0: %}
+  <h3 class="alert alert-success">{% print result %} data budaya telah terimpor dari file "{%print fname%}"</h3>
+  {% endif %}
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
+
+{% endblock %}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+
+  {% block head %}{% endblock %}
+</head>
+
+<body>
+
+  <div style="background-image: url(../static/images/bar.jpg); background-size:100% 100%;">
+    <div style="text-align: center; color: whitesmoke;">
+      <br>
+      <h1>Budaya KB Lite v6.9</h1>
+      <h2>Sistem Manajemen Knowledge Base Budaya Indonesia</h2>
+      <br><br>
+    </div>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{{url_for ('index')}}">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item {{'active' if current_menu == 'import'}}">
+          <a class="nav-link" href="{{url_for ('impor')}}">Import <span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item dropdown {{'active' if current_menu == 'edit'}}">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Edit
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{{url_for ('add')}}">Add to list</a>
+            <a class="dropdown-item" href="{{url_for ('update')}}">Update list</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{{url_for ('remove')}}">Remove from list</a>
+          </div>
+        </li>
+        <li class="nav-item {{'active' if current_menu == 'search'}}">
+          <a class="nav-link" href="{{url_for ('search')}}">Search</a>
+        </li>
+        <li class="nav-item {{'active' if current_menu == 'stats'}}">
+          <a class="nav-link" href="{{url_for ('stats')}}">Stats</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  {% block body %}{% endblock %}
+
+  <div class="" style="background-color:black; color:white;">
+    <br>
+    <footer class="container">
+      <div style="height: 500px;">
+        <div class="col-md-6" style="float: left; text-align: justify;">
+          <p><small>
+              Indonesia
+              Tanah Air ku
+              Tanah Tumpah Darah ku
+              Di sana lah aku berdiri
+              Jadi pandu Ibuku
+              Indonesia Kebangsaan ku
+              Bangsa dan Tanah Air ku
+              Marilah kita berseru:
+              Indonesia bersatu!
+              Hiduplah tanahku
+              Hiduplah negeriku
+              Bangsaku Rakyatku
+              Semuanya
+              Bangunlah jiwanya
+              Bangunlah badannya
+              Untuk Indonesia Raya
+              Indonesia Raya
+              Merdeka! Merdeka!
+              Tanah ku Negeriku
+              Yang ku cinta
+              Indonesia Raya
+              Merdeka! Merdeka!
+              Hiduplah
+              Indonesia Raya </small>
+          </p>
+          <p> <small>
+              Oh, say can you see by the dawn's early light
+              What so proudly we hailed at the twilight's last gleaming?
+              Whose broad stripes and bright stars through the perilous fight,
+              O'er the ramparts we watched were so gallantly streaming?
+              And the rocket's red glare, the bombs bursting in air,
+              Gave proof through the night that our flag was still there.
+              Oh, say does that star-spangled banner yet wave
+              O'er the land of the free and the home of the brave?</small>
+          </p>
+
+        </div>
+        <misc class="col-md-6" style="text-align: right; float: right;">
+          <h3>Aplikasi Mengolah Budaya |</h3><small>
+            <p>samuelsharon.work@gmail.com |</p>
+            <p>sssidabutar.9962@gmail.com |</p>
+            <p>+62 813 8205 6695 |</p>
+            <p>Jalan Margonda |</p>
+            <p>"Budaya is da best" -Issac Newton |</p>
+          </small>
+        </misc>
+      </div>
+    </footer>
+    <br>
+  </div>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../static/js/bootstrap.min.js"></script>
+</body>
+
+</html>

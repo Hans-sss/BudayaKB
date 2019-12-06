@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<title>Hapus|BudayaKB</title>
+
+{% endblock %}
+
+{% block body %}
+
+
+
+<div class="container" style="text-align: center;">
+    <br><br>
+    <h2>Hapus Budaya</h2>
+    <h3>Masukkan nama budaya yang akan dihapus dari sistem</h3>
+    <br><br><br>
+</div>
+
+<div class="container">
+    <form method="POST" , action="{{url_for('remove')}}" enctype="multipart/form-data">
+        <p>Masukkan Nama Budaya</p>
+        <input type="text" value='' name=name required placeholder="Name" class="form-control col-md-6">
+        <br>
+        <input type=submit value="Hapus" class="btn" style="background-color: rgb(19, 116, 106); color: whitesmoke;">
+
+    </form>
+    <br>
+    {% if name is defined %}
+    <h2 style="text-align: center;" class="alert alert-success">{{name}} telah dihapus dari daftar budaya</h2>
+    {% endif %}
+    {% if nama is defined %}
+    <h2 style="text-align: center;" class="alert alert-danger">{{nama}} tidak ditemukan dalam daftar budaya</h2>
+    {% endif %}
+    {% if imported is defined %}
+    <h2 style="text-align: center;" class="alert alert-warning">Tolong Import Terlebih Dahulu File CSV </h2>
+    {% endif %}
+    <br><br><br><br><br><br><br><br><br><br>
+</div>
+
+
+{% endblock %}

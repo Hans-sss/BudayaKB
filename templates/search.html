@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<title>Search|BudayaKB</title>
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container" style="text-align: center;">
+  <br><br>
+  <h2>Cari Budaya</h2>
+  <h3>Page pencarian budaya sesuai mode pencarian</h3>
+  <br>
+</div>
+
+<div class="container">
+  <br><br><br>
+  <form action="{{url_for('search')}}" method="POST">
+    <div class="form-group col-md-4">
+      <label for="inputState">Mode Pencarian</label>
+      <select id="inputState" class="form-control" name="mode">
+        <option selected value="name">Nama</option>
+        <option value="tipe">Tipe</option>
+        <option value="prov">Provinsi</option>
+      </select>
+    </div>
+
+    <div class="form-group col-md-8">
+      <input required class="form-control" type="text" placeholder="Search" aria-label="Search" name="keyword">
+      <br>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </div>
+  </form>
+  <br>
+  {% if result is defined %}
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">No.</th>
+        <th scope="col">Name</th>
+        <th scope="col">Type</th>
+        <th scope="col">Provinsi</th>
+        <th scope="col">url</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in result %}
+      <tr>
+        <th scope="row">{{loop.index}}</th>
+        <td>{{i.nama}}</td>
+        <td>{{i.tipe}}</td>
+        <td>{{i.prov}}</td>
+        <td>{{i.url}}</td>
+      </tr>
+      {% endfor %}
+
+
+    </tbody>
+  </table>
+  {% endif %}
+
+  {% if imported is defined %}
+  <h2 style="text-align: center;" class="alert alert-warning">Tolong Import File CSV Terlebih Dahulu</h2>
+  {% endif %}
+
+  {% if keyword is defined %}
+  <h2 style="text-align: center;" class="alert alert-danger">{{keyword}} Tidak Ditemukan di Daftar Budaya</h2>
+  {% endif %}
+
+
+  <br><br><br><br><br><br><br>
+
+</div>
+
+{% endblock %}
