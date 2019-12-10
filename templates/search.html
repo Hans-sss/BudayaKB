@@ -2,7 +2,7 @@
 
 {% block head %}
 
-<title>Search|BudayaKB</title>
+<title>Search | BudayaKB</title>
 
 {% endblock %}
 
@@ -15,11 +15,11 @@
   <br>
 </div>
 
-<div class="container">
+<div class="container col-md-4">
   <br><br><br>
   <form action="{{url_for('search')}}" method="POST">
-    <div class="form-group col-md-4">
-      <label for="inputState">Mode Pencarian</label>
+    <div class="form-group">
+      <label for="inputState" >Mode Pencarian</label>
       <select id="inputState" class="form-control" name="mode">
         <option selected value="name">Nama</option>
         <option value="tipe">Tipe</option>
@@ -27,40 +27,46 @@
       </select>
     </div>
 
-    <div class="form-group col-md-8">
+    <div class="form-group">
       <input required class="form-control" type="text" placeholder="Search" aria-label="Search" name="keyword">
       <br>
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </div>
   </form>
   <br>
-  {% if result is defined %}
-  <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">No.</th>
-        <th scope="col">Name</th>
-        <th scope="col">Type</th>
-        <th scope="col">Provinsi</th>
-        <th scope="col">url</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for i in result %}
-      <tr>
-        <th scope="row">{{loop.index}}</th>
-        <td>{{i.nama}}</td>
-        <td>{{i.tipe}}</td>
-        <td>{{i.prov}}</td>
-        <td>{{i.url}}</td>
-      </tr>
-      {% endfor %}
+</div>
 
+{% if result is defined %}
+<div style="width: 80%; margin-left: auto; margin-right: auto;">
+  <div style="position: relative; max-height: 680px; overflow-y: scroll;overflow-x: scroll; display: block;">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">No.</th>
+          <th scope="col">Nama</th>
+          <th scope="col">Tipe</th>
+          <th scope="col">Provinsi</th>
+          <th scope="col">url</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in result %}
+        <tr>
+          <th scope="row">{{loop.index}}</th>
+          <td>{{i.nama}}</td>
+          <td>{{i.tipe}}</td>
+          <td>{{i.prov}}</td>
+          <td><a href="{{i.url}}">{{i.url}}</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+  </div>
+</div>
 
-    </tbody>
-  </table>
-  {% endif %}
-
+<div class="container">
+  
   {% if imported is defined %}
   <h2 style="text-align: center;" class="alert alert-warning">Tolong Import File CSV Terlebih Dahulu</h2>
   {% endif %}
@@ -68,7 +74,6 @@
   {% if keyword is defined %}
   <h2 style="text-align: center;" class="alert alert-danger">{{keyword}} Tidak Ditemukan di Daftar Budaya</h2>
   {% endif %}
-
 
   <br><br><br><br><br><br><br>
 

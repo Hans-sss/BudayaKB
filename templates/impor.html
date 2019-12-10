@@ -2,7 +2,7 @@
 
 {% block head %}
 
-<title>Import|BudayaKB</title>
+<title>Import | BudayaKB</title>
 
 {% endblock %}
 
@@ -14,8 +14,8 @@
   <h3>Pilih file csv yang berisi daftar budaya</h3>
   <br><br><br>
 </div>
-<div class="container col-md-6">
-  <form method="POST" , action="{{url_for('impor')}}" enctype="multipart/form-data">
+<div class="container">
+  <form method="POST" , action="{{url_for('impor')}}" enctype="multipart/form-data" style="text-align: center;">
     <input type="file" accept=".csv,.txt" name=file required>
     <input type=submit value="Import Data" class="btn" style="background-color: rgb(19, 116, 106); color: whitesmoke;">
   </form>
@@ -25,8 +25,17 @@
   {% if result is defined and result >0: %}
   <h3 class="alert alert-success">{% print result %} data budaya telah terimpor dari file "{%print fname%}"</h3>
   {% endif %}
+  {% if result is defined and result == 0 %}
+  <h3 class="alert alert-warning">Tolong import file yang berisi daftar budaya</h3>
+  {% endif %}
+  {% if file_opened is defined %}
+  <h2 style="text-align: center;" class="alert alert-danger">File CSV sedang dibuka di aplikasi lain</h2>
+  {% endif %}
+  {% if file_found is defined %}
+  <h2 style="text-align: center;" class="alert alert-danger">File CSV Harus Berada Dalam Folder Yang Sama Dengan File Aplikasi</h2>
+  {% endif %}
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>
 
 {% endblock %}

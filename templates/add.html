@@ -2,7 +2,7 @@
 
 {% block head %}
 
-<title>Menambah Budaya|BudayaKB</title>
+<title>Menambah | BudayaKB</title>
 
 {% endblock %}
 
@@ -39,6 +39,9 @@
     {% endif %}
     {% if imported is defined %}
     <h2 style="text-align: center;" class="alert alert-danger">Tolong Import Terlebih Dahulu File CSV </h2>
+    {% endif %}
+    {% if file_opened is defined %}
+    <h2 style="text-align: center;" class="alert alert-danger">File CSV sedang dibuka di aplikasi lain</h2>
     {% endif %}
     <br><br><br><br>
 </div>

@@ -2,22 +2,21 @@
 
 {% block head %}
 
-<title>Update|BudayaKB</title>
+<title>Update | BudayaKB</title>
 
 {% endblock %}
 
 {% block body %}
 
-
 <div class="container" style="text-align: center;">
     <br><br>
     <h2>Ubah Budaya</h2>
-    <h3>Masukkan data budaya yang akan diubah ke dalam sistem</h3>
+    <h3>Masukkan data budaya yang akan diubah dari sistem</h3>
     <br><br><br>
 </div>
 
 <div class="container col-md-3">
-    <form method="POST" , action="{{url_for('add')}}" enctype="multipart/form-data">
+    <form method="POST" , action="{{url_for('update')}}" enctype="multipart/form-data">
         <input type="text" value='' name=name required class="form-control" placeholder="Nama">
         <br>
         <input type="text" value='' name=tipe required class="form-control" placeholder="Tipe">
@@ -28,15 +27,21 @@
         <br>
         <input type=submit value="Ubah" class="btn" style="background-color: rgb(19, 116, 106); color: whitesmoke;">
     </form>
+</div>
+
+<div class="container">
     <br>
     {% if name is defined %}
     <h2 style="text-align: center;" class="alert alert-success">{{name}} telah diupdate dalam daftar budaya</h2>
     {% endif %}
     {% if nama is defined %}
-    <h2 style="text-align: center;" class="alert alert-danger">{{nama}} tidak ditemukan dalam daftar budaya</h2>
+    <h2 style="text-align: center;" class="alert alert-danger">{{nama}} belum ada dalam daftar budaya</h2>
     {% endif %}
     {% if imported is defined %}
     <h2 style="text-align: center;" class="alert alert-warning">Tolong Import Terlebih Dahulu File CSV </h2>
+    {% endif %}
+    {% if file_opened is defined %}
+    <h2 style="text-align: center;" class="alert alert-danger">File CSV sedang dibuka di aplikasi lain</h2>
     {% endif %}
     <br><br><br><br>
 </div>
